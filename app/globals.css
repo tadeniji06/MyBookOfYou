@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap");
+@import "tailwindcss";
+
+:root {
+	--background: #050505;
+	--foreground: #ededed;
+	--accent-red: #ff0033;
+	--accent-red-dim: #99001f;
+	--accent-gray: #1a1a1a;
+}
+
+@theme {
+	--color-brand-black: #050505;
+	--color-brand-gray: #1a1a1a;
+	--color-brand-red: #ff0033;
+	--color-brand-red-dim: #99001f;
+}
+
+body {
+	color: var(--foreground);
+	background: var(--background);
+	font-family: "Outfit", sans-serif;
+	overflow-x: hidden;
+	-webkit-font-smoothing: antialiased;
+}
+
+::selection {
+	background-color: var(--accent-red);
+	color: white;
+}
+
+::-webkit-scrollbar {
+	width: 6px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--accent-red);
+	border-radius: 20px;
+}
