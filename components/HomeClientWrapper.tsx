@@ -1,8 +1,9 @@
 "use client";
 
 import IntroductionSequence from "@/components/IntroductionSequence";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Cookies from "js-cookie";
 
 export default function HomeClientWrapper({
 	children,
@@ -10,14 +11,28 @@ export default function HomeClientWrapper({
 	children: React.ReactNode;
 }) {
 	const [accessGranted, setAccessGranted] = useState(false);
+	const [loading, setLoading] = useState(true);
+
+	useEffect(() => {
+		const access = Cookies.get("access-granted");
+		if (access) {
+			setAccessGranted(true);
+		}
+		setLoading(false);
+	}, []);
+
+	const handleComplete = () => {
+		Cookies.set("access-granted", "true", { expires: 1 }); // Expires in 1 day
+		setAccessGranted(true);
+	};
+
+	if (loading) return null; // Or a loading spinner
 
 	return (
 		<div className='flex flex-col items-center min-h-screen bg-black text-white relative overflow-hidden'>
 			<AnimatePresence mode='wait'>
 				{!accessGranted && (
-					<IntroductionSequence
-						onComplete={() => setAccessGranted(true)}
-					/>
+					<IntroductionSequence onComplete={handleComplete} />
 				)}
 			</AnimatePresence>
 

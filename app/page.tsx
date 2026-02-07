@@ -1,8 +1,7 @@
 import InteractiveHeart from "@/components/InteractiveHeart";
 import PhotoGallery from "@/components/PhotoGallery";
-import UnreadMessageCTA from "@/components/UnreadMessageCTA";
+import MessageList from "@/components/MessageList";
 import HomeClientWrapper from "@/components/HomeClientWrapper";
-// We don't need 'use client' here anymore, making this a Server Component
 
 export default function Home() {
 	return (
@@ -24,8 +23,8 @@ export default function Home() {
 			<PhotoGallery />
 
 			{/* CTA Section */}
-			<div className='w-full mt-10'>
-				<UnreadMessageCTA />
+			<div className='w-full mt-20'>
+				<MessageList />
 			</div>
 
 			<footer className='w-full py-6 text-center text-zinc-800 text-xs z-10'>
