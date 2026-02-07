@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Mail, BookOpen } from "lucide-react";
 
 export default async function MessageList() {
-	const posts = await getBlogPosts(100); // Fetch up to 100 posts
+	const posts = await getBlogPosts(100); 
 
 	if (!posts || posts.length === 0) return null;
 
