@@ -32,7 +32,7 @@ export interface BlogPost {
 export const client = createClient({
 	projectId: "a15t1td1",
 	dataset: "production",
-	useCdn: true,
+	useCdn: false, // Set to false to ensure fresh data always
 	apiVersion: "2023-01-01",
 });
 
@@ -43,7 +43,7 @@ export const urlFor = (source: SanityImageSource) =>
 // Query functions with proper typing
 export const getBlogPosts = async (
 	limit = 10,
-	offset = 0
+	offset = 0,
 ): Promise<BlogPost[]> => {
 	const query = `*[_type == "post"] | order(publishedAt desc) [${offset}...${
 		offset + limit
@@ -70,7 +70,7 @@ export const getBlogPosts = async (
 };
 
 export const getBlogPost = async (
-	slug: string
+	slug: string,
 ): Promise<BlogPost | null> => {
 	// Clean the slug
 	const cleanSlug = slug?.trim();
@@ -113,7 +113,7 @@ export const getBlogPost = async (
 export const getRelatedPosts = async (
 	categories: Category[],
 	currentPostId: string,
-	limit = 3
+	limit = 3,
 ): Promise<BlogPost[]> => {
 	const query = `*[_type == "post" && _id != $currentPostId && count((categories[]._ref)[@ in $categories]) > 0] | order(publishedAt desc) [0...${limit}] {
     _id,
@@ -135,7 +135,7 @@ export const getRelatedPosts = async (
 };
 
 export const searchPosts = async (
-	searchTerm: string
+	searchTerm: string,
 ): Promise<BlogPost[]> => {
 	const query = `*[_type == "post" && (title match $searchTerm || pt::text(body) match $searchTerm)] | order(publishedAt desc) {
     _id,
