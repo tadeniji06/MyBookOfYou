@@ -12,21 +12,21 @@ const QUESTIONS = [
 	{
 		id: 1,
 		question:
-			"What's one slang you know I say a lot and almost everyday?",
-		answers: ["type shii"],
+			"What's my ibibio name?",
+		answers: ["iyene obong"],
 		placeholder: "Hint: 2 words...",
 	},
 	{
 		id: 2,
-		question: "What's my fav car brand?",
-		answers: ["bmw"],
-		placeholder: "Vroom vroom...",
+		question: "What is my state of origin?",
+		answers: ["oyo state"],
+		placeholder: "its located in the southwest...",
 	},
 	{
 		id: 3,
-		question: "What's my team?",
-		answers: ["man utd", "manchester united"],
-		placeholder: "GGMU...",
+		question: "How many times in a day do i tell you i love you?",
+		answers: ["two times"],
+		placeholder: "guess how much i love you?",
 	},
 ];
 
