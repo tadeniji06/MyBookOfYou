@@ -13,19 +13,19 @@ const QUESTIONS = [
 		id: 1,
 		question:
 			"What's my ibibio name?",
-		answers: ["iyene obong"],
+		answers: ["iyene obong, Iyene Obong, Iyene obong"],
 		placeholder: "Hint: 2 words...",
 	},
 	{
 		id: 2,
 		question: "What is my state of origin?",
-		answers: ["oyo state"],
+		answers: ["oyo state, Oyo State, Oyo state"],
 		placeholder: "its located in the southwest...",
 	},
 	{
 		id: 3,
 		question: "How many times in a day do i tell you i love you?",
-		answers: ["two times"],
+		answers: ["two times", "Two times", "Two Times"],
 		placeholder: "guess how much i love you?",
 	},
 ];
