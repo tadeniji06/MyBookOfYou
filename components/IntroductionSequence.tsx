@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import { Send, CheckCircle2, XCircle, Play } from "lucide-react";
 
 interface IntroductionSequenceProps {
@@ -11,21 +11,20 @@ interface IntroductionSequenceProps {
 const QUESTIONS = [
 	{
 		id: 1,
-		question:
-			"What's my ibibio name?",
-		answers: ["iyene obong, Iyene Obong, Iyene obong"],
+		question: "What's my ibibio name?",
+		answers: ["iyene obong", "iyeneobong", "inyene obong"],
 		placeholder: "Hint: 2 words...",
 	},
 	{
 		id: 2,
 		question: "What is my state of origin?",
-		answers: ["oyo state, Oyo State, Oyo state"],
+		answers: ["oyo state", "oyo"],
 		placeholder: "its located in the southwest...",
 	},
 	{
 		id: 3,
 		question: "How many times in a day do i tell you i love you?",
-		answers: ["two times", "Two times", "Two Times"],
+		answers: ["two times", "2 times", "twice"],
 		placeholder: "guess how much i love you?",
 	},
 ];
@@ -42,6 +41,7 @@ export default function IntroductionSequence({
 	const [error, setError] = useState(false);
 	const videoRef = useRef<HTMLVideoElement>(null);
 	const [showPlayButton, setShowPlayButton] = useState(false);
+	const [shake, setShake] = useState(false);
 
 	// ... (video handlers remain same)
 	// Handle Video End
@@ -70,7 +70,7 @@ export default function IntroductionSequence({
 		}
 	};
 
-	const handleAnswerSubmit = (e: React.FormEvent) => {
+	const handleAnswerSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		const currentQ = QUESTIONS[currentQuestionIndex];
 
@@ -92,7 +92,23 @@ export default function IntroductionSequence({
 			}
 		} else {
 			setError(true);
+			setShake(true);
+			setTimeout(() => setShake(false), 500);
 		}
+	};
+
+	const cardVariants = {
+		hidden: { x: 50, opacity: 0 },
+		visible: {
+			x: 0,
+			opacity: 1,
+			transition: { stiffness: 300, damping: 20 },
+		},
+		shake: {
+			x: [0, -10, 10, -10, 10, 0],
+			opacity: 1,
+			transition: { duration: 0.4 },
+		},
 	};
 
 	return (
@@ -171,10 +187,10 @@ export default function IntroductionSequence({
 						<motion.div
 							key={currentQuestionIndex}
 							className='bg-zinc-900/80 border border-zinc-800 p-8 rounded-3xl backdrop-blur-xl relative overflow-hidden'
-							initial={{ x: 50, opacity: 0 }}
-							animate={{ x: 0, opacity: 1 }}
+							variants={cardVariants}
+							initial='hidden'
+							animate={shake ? "shake" : "visible"}
 							exit={{ x: -50, opacity: 0 }}
-							transition={{ type: "spring", bounce: 0.3 }}
 						>
 							{/* Progress Bar */}
 							<div
