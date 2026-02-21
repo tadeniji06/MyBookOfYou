@@ -3,6 +3,8 @@ import PhotoGallery from "@/components/PhotoGallery";
 import MessageList from "@/components/MessageList";
 import HomeClientWrapper from "@/components/HomeClientWrapper";
 
+export const dynamic = "force-dynamic";
+
 export default function Home() {
 	return (
 		<HomeClientWrapper>

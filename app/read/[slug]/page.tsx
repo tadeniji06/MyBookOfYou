@@ -7,6 +7,8 @@ import { ArrowLeft, Calendar } from "lucide-react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 
+export const dynamic = "force-dynamic";
+
 // Define components for PortableText to style them
 const ptComponents = {
 	block: {

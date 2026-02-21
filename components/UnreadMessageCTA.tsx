@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Mail } from "lucide-react";
 
 export default async function UnreadMessageCTA() {
-	const posts = await getBlogPosts(1);
+	const posts = await getBlogPosts(10);
 	const latestPost = posts[0];
 
 	if (!latestPost) return null;
