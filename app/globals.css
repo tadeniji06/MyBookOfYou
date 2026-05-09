@@ -1,43 +1,88 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
 :root {
-	--background: #050505;
-	--foreground: #ededed;
-	--accent-red: #ff0033;
-	--accent-red-dim: #99001f;
-	--accent-gray: #1a1a1a;
+	--background: #030001;
+	--foreground: #f4f4f5;
+	--accent-red: #e60026;
+	--accent-red-dim: #800015;
+	--accent-gray: #121214;
+	
+	/* Soft romantic glow colors */
+	--glow-red: rgba(230, 0, 38, 0.15);
+	--glow-pink: rgba(255, 105, 180, 0.05);
 }
 
 @theme {
-	--color-brand-black: #050505;
-	--color-brand-gray: #1a1a1a;
-	--color-brand-red: #ff0033;
-	--color-brand-red-dim: #99001f;
+	--color-brand-black: #030001;
+	--color-brand-gray: #121214;
+	--color-brand-red: #e60026;
+	--color-brand-red-dim: #800015;
 }
 
 body {
 	color: var(--foreground);
-	background: var(--background);
+	background-color: var(--background);
+	background-image: 
+		radial-gradient(circle at 15% 50%, var(--glow-red), transparent 25%),
+		radial-gradient(circle at 85% 30%, var(--glow-pink), transparent 25%);
+	background-attachment: fixed;
 	font-family: "Outfit", sans-serif;
 	overflow-x: hidden;
 	-webkit-font-smoothing: antialiased;
 }
 
+/* Smooth scrolling */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Beautiful Selection */
 ::selection {
 	background-color: var(--accent-red);
 	color: white;
+	text-shadow: 0 0 8px rgba(255,255,255,0.4);
 }
 
+/* Premium Scrollbar */
 ::-webkit-scrollbar {
-	width: 6px;
+	width: 8px;
 }
 
 ::-webkit-scrollbar-track {
 	background: var(--background);
+	border-left: 1px solid rgba(255,255,255,0.02);
 }
 
 ::-webkit-scrollbar-thumb {
-	background: var(--accent-red);
+	background: linear-gradient(to bottom, var(--accent-red-dim), var(--accent-red));
 	border-radius: 20px;
+	border: 2px solid var(--background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--accent-red);
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+	background: rgba(18, 18, 20, 0.6);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	border: 1px solid rgba(255, 255, 255, 0.05);
+	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.text-gradient {
+	background: linear-gradient(135deg, #fff 0%, #a1a1aa 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+.text-gradient-red {
+	background: linear-gradient(135deg, #ff4d6d 0%, #e60026 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
 }

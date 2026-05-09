@@ -38,10 +38,10 @@ export default function PhotoGallery() {
 							type: "spring",
 							stiffness: 100,
 						}}
-						className='absolute h-56 w-40 md:h-80 md:w-60 border-4 border-white shadow-[0_0_20px_rgba(0,0,0,0.5)] overflow-hidden rounded-xl cursor-pointer'
+						className='absolute h-56 w-40 md:h-80 md:w-60 p-2 md:p-3 bg-white shadow-[0_15px_35px_rgba(230,0,38,0.15)] rounded-lg cursor-pointer transform-gpu'
 						style={{ zIndex: index }}
 					>
-						<div className='relative w-full h-full bg-zinc-900'>
+						<div className='relative w-full h-full bg-zinc-900 rounded-sm overflow-hidden'>
 							<Image
 								src={photo}
 								alt={`Us ${index + 1}`}
