@@ -135,7 +135,7 @@ export default function IntroductionSequence({
 
 	return (
 		<motion.div
-			className='fixed inset-0 z-50 bg-black flex flex-col items-center justify-center overflow-hidden'
+			className='fixed inset-0 z-50 bg-white/95 flex flex-col items-center justify-center overflow-hidden'
 			initial={{ opacity: 1 }}
 			exit={{ opacity: 0, transition: { duration: 1 } }}
 		>
@@ -151,15 +151,15 @@ export default function IntroductionSequence({
 					>
 						<video
 							ref={videoRef}
-							src='/vid.mp4'
-							className='w-full h-full object-cover opacity-80'
+							src='/nVid.mp4'
+							className='w-full h-screen object-cover opacity-100'
 							playsInline
 							onEnded={handleVideoEnd}
 						/>
-						<div className='absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent' />
+						<div className='absolute inset-0' />
 
 						{showPlayButton && (
-							<div className='absolute inset-0 flex items-center justify-center bg-black/60 backdrop-blur-md z-20'>
+							<div className='absolute inset-0 flex items-center justify-center bg-white/60 backdrop-blur-md z-20'>
 								<motion.button
 									whileHover={{ scale: 1.1 }}
 									whileTap={{ scale: 0.95 }}
@@ -174,7 +174,7 @@ export default function IntroductionSequence({
 						<div className='absolute bottom-12 right-12 z-30'>
 							<button
 								onClick={handleVideoEnd}
-								className='text-zinc-400 hover:text-white transition-colors text-sm font-medium tracking-widest uppercase border border-zinc-800 hover:border-zinc-500 px-4 py-2 rounded-full bg-black/50 backdrop-blur-sm'
+								className='text-zinc-600 hover:text-black transition-colors text-sm font-medium tracking-widest uppercase border border-zinc-300 hover:border-zinc-500 px-4 py-2 rounded-full bg-white/50 backdrop-blur-sm'
 							>
 								Skip Intro
 							</button>
@@ -203,7 +203,7 @@ export default function IntroductionSequence({
 							<motion.h2
 								initial={{ y: 20, opacity: 0 }}
 								animate={{ y: 0, opacity: 1 }}
-								className='text-3xl font-bold text-white mb-2 tracking-tight'
+								className='text-3xl font-bold text-gray-900 mb-2 tracking-tight'
 							>
 								Security Check
 							</motion.h2>
@@ -211,7 +211,7 @@ export default function IntroductionSequence({
 								initial={{ y: 20, opacity: 0 }}
 								animate={{ y: 0, opacity: 1 }}
 								transition={{ delay: 0.1 }}
-								className='text-zinc-400 text-sm'
+								className='text-zinc-600 text-sm'
 							>
 								Prove you are the one ❤️
 							</motion.p>
@@ -219,14 +219,14 @@ export default function IntroductionSequence({
 
 						<motion.div
 							key={currentQuestionIndex}
-							className='bg-zinc-950/80 border border-zinc-800/80 p-8 rounded-[2rem] backdrop-blur-2xl relative overflow-hidden shadow-2xl'
+							className='bg-white/80 border border-brand-red/20 p-8 rounded-[2rem] backdrop-blur-2xl relative overflow-hidden shadow-[0_20px_50px_rgba(255,77,133,0.1)]'
 							variants={cardVariants}
 							initial='hidden'
 							animate={shake ? "shake" : "visible"}
 							exit={{ x: -50, opacity: 0 }}
 						>
 							{/* Progress Bar */}
-							<div className='absolute top-0 left-0 w-full h-1.5 bg-zinc-900'>
+							<div className='absolute top-0 left-0 w-full h-1.5 bg-brand-red/10'>
 								<div
 									className='h-full bg-gradient-to-r from-brand-red/50 to-brand-red transition-all duration-500 ease-out'
 									style={{
@@ -237,7 +237,7 @@ export default function IntroductionSequence({
 
 							<div className="mt-2 mb-8">
 								<span className="text-brand-red text-xs font-bold tracking-widest uppercase mb-2 block">Question 0{currentQuestionIndex + 1}</span>
-								<h3 className='text-2xl text-white font-medium leading-tight'>
+								<h3 className='text-2xl text-gray-900 font-medium leading-tight'>
 									{QUESTIONS[currentQuestionIndex].question}
 								</h3>
 							</div>
@@ -256,13 +256,13 @@ export default function IntroductionSequence({
 												setError(false);
 											}}
 											placeholder={QUESTIONS[currentQuestionIndex].placeholder}
-											className={`w-full bg-black/60 border-2 ${error ? "border-red-500/50 text-red-500 focus:border-red-500" : "border-zinc-800 focus:border-brand-red/70 text-white"} rounded-2xl px-5 py-4 pr-14 outline-none transition-all placeholder:text-zinc-600 font-medium`}
+											className={`w-full bg-white/60 border-2 ${error ? "border-red-500/50 text-red-500 focus:border-red-500" : "border-brand-red/20 focus:border-brand-red/70 text-gray-900"} rounded-2xl px-5 py-4 pr-14 outline-none transition-all placeholder:text-zinc-400 font-medium shadow-sm`}
 											autoFocus
 										/>
 										<button
 											type='submit'
 											disabled={!inputValue}
-											className='absolute right-3 top-1/2 -translate-y-1/2 p-2.5 bg-white text-black rounded-xl hover:bg-brand-red hover:text-white disabled:opacity-0 disabled:scale-75 transition-all duration-300'
+											className='absolute right-3 top-1/2 -translate-y-1/2 p-2.5 bg-brand-red text-white rounded-xl hover:bg-brand-red-dim disabled:opacity-0 disabled:scale-75 transition-all duration-300'
 										>
 											<Send size={18} className={error ? "text-red-500" : ""} />
 										</button>
@@ -276,13 +276,13 @@ export default function IntroductionSequence({
 												onClick={() => handleRadioSelect(option)}
 												className={`w-full text-left px-5 py-4 rounded-2xl border-2 transition-all duration-200 flex items-center justify-between group ${
 													inputValue === option
-														? "border-brand-red bg-brand-red/10 text-white"
-														: "border-zinc-800 bg-black/40 text-zinc-400 hover:border-zinc-600 hover:text-zinc-200 hover:bg-zinc-900/50"
+														? "border-brand-red bg-brand-red/10 text-brand-red"
+														: "border-brand-red/10 bg-white/40 text-gray-600 hover:border-brand-red/30 hover:text-brand-red hover:bg-brand-red/5"
 												}`}
 											>
 												<span className="font-medium">{option}</span>
 												<div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${
-													inputValue === option ? "border-brand-red" : "border-zinc-700 group-hover:border-zinc-500"
+													inputValue === option ? "border-brand-red" : "border-gray-300 group-hover:border-brand-red/50"
 												}`}>
 													{inputValue === option && <div className="w-2.5 h-2.5 bg-brand-red rounded-full" />}
 												</div>
@@ -294,7 +294,7 @@ export default function IntroductionSequence({
 											disabled={!inputValue}
 											initial={{ opacity: 0, y: 10 }}
 											animate={{ opacity: inputValue ? 1 : 0, y: inputValue ? 0 : 10 }}
-											className='w-full mt-6 bg-white text-black py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-brand-red hover:text-white transition-colors disabled:pointer-events-none'
+											className='w-full mt-6 bg-brand-red text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-brand-red-dim transition-colors disabled:pointer-events-none shadow-md shadow-brand-red/20'
 										>
 											Continue <Send size={18} />
 										</motion.button>
@@ -332,10 +332,10 @@ export default function IntroductionSequence({
 							<CheckCircle2 size={48} className='text-white' strokeWidth={2.5} />
 						</motion.div>
 
-						<h2 className='text-5xl font-bold text-white mb-4 tracking-tight'>
+						<h2 className='text-5xl font-bold text-gray-900 mb-4 tracking-tight'>
 							You passed!
 						</h2>
-						<p className='text-zinc-400 max-w-sm mx-auto mb-10 leading-relaxed text-lg'>
+						<p className='text-zinc-600 max-w-sm mx-auto mb-10 leading-relaxed text-lg'>
 							Good job! Just so you know, the answers change every
 							week regardless - so don&apos;t be too excited. 😉
 						</p>
@@ -344,7 +344,7 @@ export default function IntroductionSequence({
 							whileHover={{ scale: 1.05 }}
 							whileTap={{ scale: 0.95 }}
 							onClick={onComplete}
-							className='bg-white text-black px-10 py-4 rounded-full font-bold text-lg hover:bg-brand-red hover:text-white hover:shadow-[0_0_40px_rgba(255,0,51,0.5)] transition-all duration-300'
+							className='bg-brand-red text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-brand-red-dim hover:shadow-[0_0_40px_rgba(255,77,133,0.5)] transition-all duration-300'
 						>
 							Enter Journal
 						</motion.button>

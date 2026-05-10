@@ -2,30 +2,30 @@
 @import "tailwindcss";
 
 :root {
-	--background: #030001;
-	--foreground: #f4f4f5;
-	--accent-red: #e60026;
-	--accent-red-dim: #800015;
-	--accent-gray: #121214;
+	--background: #fff5f8;
+	--foreground: #2d1b2e;
+	--accent-red: #ff4d85;
+	--accent-red-dim: #ff8fb3;
+	--accent-gray: #ffffff;
 	
 	/* Soft romantic glow colors */
-	--glow-red: rgba(230, 0, 38, 0.15);
-	--glow-pink: rgba(255, 105, 180, 0.05);
+	--glow-red: rgba(255, 77, 133, 0.15);
+	--glow-pink: rgba(255, 182, 193, 0.3);
 }
 
 @theme {
-	--color-brand-black: #030001;
-	--color-brand-gray: #121214;
-	--color-brand-red: #e60026;
-	--color-brand-red-dim: #800015;
+	--color-brand-black: #fff5f8;
+	--color-brand-gray: #ffffff;
+	--color-brand-red: #ff4d85;
+	--color-brand-red-dim: #ff8fb3;
 }
 
 body {
 	color: var(--foreground);
 	background-color: var(--background);
 	background-image: 
-		radial-gradient(circle at 15% 50%, var(--glow-red), transparent 25%),
-		radial-gradient(circle at 85% 30%, var(--glow-pink), transparent 25%);
+		radial-gradient(circle at 15% 50%, var(--glow-red), transparent 35%),
+		radial-gradient(circle at 85% 30%, var(--glow-pink), transparent 35%);
 	background-attachment: fixed;
 	font-family: "Outfit", sans-serif;
 	overflow-x: hidden;
@@ -51,7 +51,7 @@ html {
 
 ::-webkit-scrollbar-track {
 	background: var(--background);
-	border-left: 1px solid rgba(255,255,255,0.02);
+	border-left: 1px solid rgba(255, 77, 133, 0.1);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -66,22 +66,22 @@ html {
 
 /* Glassmorphism Utilities */
 .glass-panel {
-	background: rgba(18, 18, 20, 0.6);
+	background: rgba(255, 255, 255, 0.6);
 	backdrop-filter: blur(16px);
 	-webkit-backdrop-filter: blur(16px);
-	border: 1px solid rgba(255, 255, 255, 0.05);
-	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+	border: 1px solid rgba(255, 77, 133, 0.2);
+	box-shadow: 0 8px 32px 0 rgba(255, 77, 133, 0.1);
 }
 
 .text-gradient {
-	background: linear-gradient(135deg, #fff 0%, #a1a1aa 100%);
+	background: linear-gradient(135deg, #2d1b2e 0%, #6b4c6a 100%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
 }
 
 .text-gradient-red {
-	background: linear-gradient(135deg, #ff4d6d 0%, #e60026 100%);
+	background: linear-gradient(135deg, #ff1493 0%, #ff4d85 100%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
