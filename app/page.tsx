@@ -1,4 +1,3 @@
-import BirthdaySurprise from "@/components/BirthdaySurprise";
 import PhotoGallery from "@/components/PhotoGallery";
 import MessageList from "@/components/MessageList";
 import HomeClientWrapper from "@/components/HomeClientWrapper";
@@ -11,19 +10,11 @@ export default function Home() {
 			{/* Header Section */}
 			<header className='text-center space-y-6'>
 				<h1 className='text-5xl md:text-7xl font-bold text-gradient-red tracking-tighter drop-shadow-lg'>
-					HAPPY BIRTHDAY!
+					WELCOME
 				</h1>
-				<p className='text-zinc-600 text-sm md:text-base tracking-[0.3em] uppercase font-medium'>
-					A Special Celebration For You
-				</p>
 			</header>
 
-			{/* Peak Interactive UI - Birthday Game */}
-			<BirthdaySurprise />
-
-
-			{/* Photos Section */}
-			<PhotoGallery />
+			{/* <PhotoGallery /> */}
 
 			{/* CTA Section */}
 			<div className='w-full mt-20'>
