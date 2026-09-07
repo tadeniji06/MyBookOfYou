@@ -41,12 +41,62 @@ const QUESTIONS: Question[] = [
 	},
 	{
 		id: 3,
+		question: "When is your birthday?",
+		type: "radio",
+		options: ["24th April", "26th January", "10th October", "11th May"],
+		answers: ["11th may"],
+	},
+	{
+		id: 4,
 		question: "What's my ibibio name?",
 		type: "text",
 		answers: ["iyene obong", "iyeneobong", "inyene obong"],
 		placeholder: "Hint: 2 words...",
 	},
+	{
+		id: 5,
+		question: "What's your oriki?",
+		type: "text",
+		answers: ["adunni"],
+		placeholder: "Hint: Starts with A...",
+	},
 ];
+
+// Helper to generate random floating hearts
+const FloatingHearts = () => {
+	const hearts = Array.from({ length: 15 });
+	return (
+		<div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+			{hearts.map((_, i) => {
+				const left = Math.random() * 100;
+				const animationDuration = 5 + Math.random() * 10;
+				const delay = Math.random() * 5;
+				const size = 10 + Math.random() * 20;
+
+				return (
+					<motion.div
+						key={i}
+						initial={{ y: "100vh", opacity: 0, x: `${left}vw` }}
+						animate={{ 
+							y: "-10vh", 
+							opacity: [0, 0.6, 0],
+							x: [`${left}vw`, `${left + (Math.random() * 10 - 5)}vw`] 
+						}}
+						transition={{
+							duration: animationDuration,
+							repeat: Infinity,
+							delay: delay,
+							ease: "linear"
+						}}
+						className="absolute bottom-0 text-brand-red/30"
+					>
+						<Heart size={size} fill="currentColor" />
+					</motion.div>
+				);
+			})}
+		</div>
+	);
+};
 
 export default function IntroductionSequence({
 	onComplete,
@@ -139,6 +189,7 @@ export default function IntroductionSequence({
 			initial={{ opacity: 1 }}
 			exit={{ opacity: 0, transition: { duration: 1 } }}
 		>
+			{step !== "video" && <FloatingHearts />}
 			<AnimatePresence mode='wait'>
 				{/* VIDEO STEP */}
 				{step === "video" && (
